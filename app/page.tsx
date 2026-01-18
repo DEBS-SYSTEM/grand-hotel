@@ -1,65 +1,84 @@
-import Image from "next/image";
+import Hero from "@/components/sections/home/Hero"
+import BookingBar from "@/components/sections/home/BookingBar"
+import RoomCard from "@/components/sections/home/RoomCard"
+import AboutSection from "@/components/sections/home/AboutSection"
+import Facilities from "@/components/sections/home/Facilities"; 
+import CTA from "@/components/sections/home/CTA"
+import Container from "@/components/ui/Container";
+import { SectionTitle, SubTitle } from "@/components/ui/Typography";
+
+const FEATURED_ROOMS = [
+  {
+    id: 1,
+    name: "Oceanfront Cliff Suite",
+    price: "IDR 3.500.000",
+    slug: "ocean-suite",
+    image: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=2070",
+    description: "Nikmati pemandangan Samudra Hindia langsung dari balkon pribadi Anda. Dilengkapi dengan private jacuzzi.",
+  },
+  {
+    id: 2,
+    name: "Sanctuary Jungle Villa",
+    price: "IDR 5.200.000",
+    slug: "jungle-villa",
+    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070",
+    description: "Vila tersembunyi di tengah rimbunnya hutan Ubud. Privasi total dengan kolam renang infinity pribadi.",
+  },
+  {
+    id: 3,
+    name: "The Royal Residence",
+    price: "IDR 12.000.000",
+    slug: "royal-residence",
+    image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=2070",
+    description: "Kemewahan tertinggi untuk keluarga. Dua kamar tidur luas dengan ruang tamu terpisah dan akses langsung ke pantai.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main>
+      
+      {/* 1. HERO (Full Screen) */}
+      <Hero />
+
+      {/* 2. BOOKING BAR (Floating) */}
+      <BookingBar />
+
+      {/* 3. ABOUT SECTION (New Storytelling) */}
+      <AboutSection />
+
+      {/* 4. ROOMS SECTION (Grid System) */}
+      <section className="py-24 bg-white">
+        <Container>
+          <div className="text-center mb-16 max-w-2xl mx-auto">
+            <SubTitle>The Accommodation</SubTitle>
+            <SectionTitle>Rooms & Suites</SectionTitle>
+            <p className="text-gray-500 font-light">
+              Temukan kenyamanan istirahat di kamar-kamar kami yang didesain elegan dengan sentuhan material alami.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {FEATURED_ROOMS.map((room) => (
+              <RoomCard
+                key={room.id}
+                name={room.name}
+                price={room.price}
+                image={room.image}
+                description={room.description}
+                slug={room.slug}
+              />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 5. FACILITIES (New Icons Grid) */}
+      <Facilities />
+
+      {/* 6. CTA (New Final Push) */}
+      <CTA />
+
+    </main>
   );
 }
