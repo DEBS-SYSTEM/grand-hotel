@@ -37,8 +37,8 @@ export default function Navbar() {
         <Container className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="group relative z-50">
-            <span className={cn("font-[family-name:var(--font-playfair)] text-2xl font-bold tracking-widest transition-colors", isOpen ? "text-[#1c1917]" : "")}>
-              GRAND NUSA
+            <span className={cn("font-[family-name:var(--font-playfair)] text-2xl font-bold tracking-widest transition-colors uppercase", isOpen ? "text-[#1c1917]" : "")}>
+              Elysium Estate
             </span>
           </Link>
 
